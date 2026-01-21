@@ -76,7 +76,7 @@ export const generateQuotePDF = (quote: Quote): void => {
   doc.setFillColor(243, 244, 246); // gray-50
   doc.rect(margin, yPos - 5, pageWidth - 2 * margin, 8, 'F');
   doc.setFontSize(10);
-  doc.setFont(undefined, 'bold');
+  doc.setFont('helvetica', 'bold');
   doc.text('Description', margin + 2, yPos);
   doc.text('Qty', margin + 100, yPos);
   doc.text('Price', margin + 120, yPos);
@@ -84,7 +84,7 @@ export const generateQuotePDF = (quote: Quote): void => {
   doc.text('Total', pageWidth - margin - 30, yPos, { align: 'right' });
   yPos += 8;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont('helvetica', 'normal');
   quote.items.forEach((item) => {
     if (yPos > 250) {
       doc.addPage();
@@ -126,7 +126,7 @@ export const generateQuotePDF = (quote: Quote): void => {
   doc.text(formatCurrency(quote.vatAmount), pageWidth - margin - 2, yPos, { align: 'right' });
   yPos += 7;
 
-  doc.setFont(undefined, 'bold');
+  doc.setFont('helvetica', 'bold');
   doc.setFontSize(12);
   doc.setDrawColor(200, 200, 200);
   doc.line(pageWidth - margin - 50, yPos - 2, pageWidth - margin, yPos - 2);
@@ -140,11 +140,11 @@ export const generateQuotePDF = (quote: Quote): void => {
       doc.addPage();
       yPos = margin;
     }
-    doc.setFont(undefined, 'bold');
+    doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     doc.text('Notes:', margin, yPos);
     yPos += 7;
-    doc.setFont(undefined, 'normal');
+    doc.setFont('helvetica', 'normal');
     const notesLines = doc.splitTextToSize(quote.notes, pageWidth - 2 * margin);
     notesLines.forEach((line: string) => {
       if (yPos > 270) {
@@ -234,7 +234,7 @@ export const generateOrderPDF = (order: Order): void => {
   doc.setFillColor(243, 244, 246);
   doc.rect(margin, yPos - 5, pageWidth - 2 * margin, 8, 'F');
   doc.setFontSize(10);
-  doc.setFont(undefined, 'bold');
+  doc.setFont('helvetica', 'bold');
   doc.text('Description', margin + 2, yPos);
   doc.text('Qty', margin + 100, yPos);
   doc.text('Price', margin + 120, yPos);
@@ -242,7 +242,7 @@ export const generateOrderPDF = (order: Order): void => {
   doc.text('Total', pageWidth - margin - 30, yPos, { align: 'right' });
   yPos += 8;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont('helvetica', 'normal');
   order.items.forEach((item) => {
     if (yPos > 250) {
       doc.addPage();
@@ -284,7 +284,7 @@ export const generateOrderPDF = (order: Order): void => {
   doc.text(formatCurrency(order.vatAmount), pageWidth - margin - 2, yPos, { align: 'right' });
   yPos += 7;
 
-  doc.setFont(undefined, 'bold');
+  doc.setFont('helvetica', 'bold');
   doc.setFontSize(12);
   doc.setDrawColor(200, 200, 200);
   doc.line(pageWidth - margin - 50, yPos - 2, pageWidth - margin, yPos - 2);
@@ -298,11 +298,11 @@ export const generateOrderPDF = (order: Order): void => {
       doc.addPage();
       yPos = margin;
     }
-    doc.setFont(undefined, 'bold');
+    doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     doc.text('Notes:', margin, yPos);
     yPos += 7;
-    doc.setFont(undefined, 'normal');
+    doc.setFont('helvetica', 'normal');
     const notesLines = doc.splitTextToSize(order.notes, pageWidth - 2 * margin);
     notesLines.forEach((line: string) => {
       if (yPos > 270) {
@@ -423,7 +423,7 @@ export const generateInvoicePDF = (invoice: Invoice): void => {
   doc.setFillColor(243, 244, 246);
   doc.rect(margin, yPos - 5, pageWidth - 2 * margin, 8, 'F');
   doc.setFontSize(10);
-  doc.setFont(undefined, 'bold');
+  doc.setFont('helvetica', 'bold');
   doc.text('Description', margin + 2, yPos);
   doc.text('Qty', margin + 100, yPos);
   doc.text('Price', margin + 120, yPos);
@@ -431,7 +431,7 @@ export const generateInvoicePDF = (invoice: Invoice): void => {
   doc.text('Total', pageWidth - margin - 30, yPos, { align: 'right' });
   yPos += 8;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont('helvetica', 'normal');
   invoice.items.forEach((item) => {
     if (yPos > 250) {
       doc.addPage();
@@ -473,7 +473,7 @@ export const generateInvoicePDF = (invoice: Invoice): void => {
   doc.text(formatCurrency(invoice.vatAmount), pageWidth - margin - 2, yPos, { align: 'right' });
   yPos += 7;
 
-  doc.setFont(undefined, 'bold');
+  doc.setFont('helvetica', 'bold');
   doc.setFontSize(12);
   doc.setDrawColor(200, 200, 200);
   doc.line(pageWidth - margin - 50, yPos - 2, pageWidth - margin, yPos - 2);
@@ -487,11 +487,11 @@ export const generateInvoicePDF = (invoice: Invoice): void => {
       doc.addPage();
       yPos = margin;
     }
-    doc.setFont(undefined, 'bold');
+    doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     doc.text('Notes:', margin, yPos);
     yPos += 7;
-    doc.setFont(undefined, 'normal');
+    doc.setFont('helvetica', 'normal');
     const notesLines = doc.splitTextToSize(invoice.notes, pageWidth - 2 * margin);
     notesLines.forEach((line: string) => {
       if (yPos > 270) {
