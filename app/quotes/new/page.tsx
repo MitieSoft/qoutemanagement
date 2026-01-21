@@ -105,6 +105,10 @@ export default function NewQuotePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!user) {
+      router.push('/login');
+      return;
+    }
     if (!formData.clientId || items.length === 0) {
       alert('Please select a client and add at least one item');
       return;
