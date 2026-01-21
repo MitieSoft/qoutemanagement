@@ -53,7 +53,7 @@ import {
 
 // Re-export types for convenience
 export { EntityType };
-export type { Client };
+export type { Client, Quote, Invoice, Product, Order };
 
 // Default data
 const defaultUsers: User[] = [
