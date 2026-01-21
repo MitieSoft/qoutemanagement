@@ -4,7 +4,7 @@ import DashboardLayout from '@/components/layouts/DashboardLayout';
 import { getCurrentUser, logout } from '@/lib/auth';
 import { useRouter, useParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
-import { mockUsers } from '@/lib/mockData';
+import { mockUsers, updateUser } from '@/lib/mockData';
 import { Role, User } from '@/lib/types';
 import Link from 'next/link';
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
