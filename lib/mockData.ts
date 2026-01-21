@@ -51,8 +51,9 @@ import {
   reconstructActivityReferences,
 } from './mockDataHelpers';
 
-// Re-export EntityType for convenience
+// Re-export types for convenience
 export { EntityType };
+export type { Client };
 
 // Default data
 const defaultUsers: User[] = [
