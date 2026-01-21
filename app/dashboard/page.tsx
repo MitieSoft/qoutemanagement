@@ -32,22 +32,32 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setMounted(true);
+    // Check authentication first
+    const currentUser = getCurrentUser();
+    if (!currentUser) {
+      router.push('/login');
+      return;
+    }
+    setUser(currentUser);
     setQuotes(mockQuotes);
     setInvoices(mockInvoices);
-  }, []);
+  }, [router]);
 
   useEffect(() => {
-    if (!user) {
+    if (mounted && !user) {
       router.push('/login');
     }
-  }, [user, router]);
+  }, [user, mounted, router]);
 
   const handleLogout = () => {
     logout();
     router.push('/login');
   };
 
-  if (!user || !mounted) return null;
+  // Don't render anything until mounted and user is confirmed
+  if (!mounted || !user) {
+    return null;
+  }
 
   // Calculate statistics
   const quotesByStatus = {

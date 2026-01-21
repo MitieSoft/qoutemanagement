@@ -3,7 +3,21 @@ import { User, Role } from './types';
 import { mockUsers } from './mockData';
 
 // Simulate current user session
-let currentUser: User | null = mockUsers[0]; // Default to admin
+let currentUser: User | null = null;
+
+// Initialize from localStorage if available (for persistence across page refreshes)
+if (typeof window !== 'undefined') {
+  const storedUserId = localStorage.getItem('currentUserId');
+  if (storedUserId) {
+    const user = mockUsers.find((u) => u.id === storedUserId);
+    if (user) {
+      currentUser = user;
+    } else {
+      // Invalid stored user ID, clear it
+      localStorage.removeItem('currentUserId');
+    }
+  }
+}
 
 export const getCurrentUser = (): User | null => {
   // In production, get from session/cookie/JWT
@@ -12,6 +26,14 @@ export const getCurrentUser = (): User | null => {
 
 export const setCurrentUser = (user: User | null) => {
   currentUser = user;
+  // Persist to localStorage
+  if (typeof window !== 'undefined') {
+    if (user) {
+      localStorage.setItem('currentUserId', user.id);
+    } else {
+      localStorage.removeItem('currentUserId');
+    }
+  }
 };
 
 export const login = (email: string, password: string): User | null => {
@@ -36,11 +58,11 @@ export const login = (email: string, password: string): User | null => {
     // In production, all users should have passwords
   }
   
-  currentUser = user;
+  setCurrentUser(user);
   return user;
 };
 
 export const logout = () => {
-  currentUser = null;
+  setCurrentUser(null);
 };
 
